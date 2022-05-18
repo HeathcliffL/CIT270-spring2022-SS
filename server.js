@@ -15,7 +15,13 @@ const md5 = require('md5');
 //require the redis libary
 const {createClient} = require('redis');
 //use this to connocting redis database
-const client = createClient();
+const client = createClient(
+    {
+    socket:{
+        port:6379,
+        host:"127.0.0.1"
+    }
+});
 client.connect();
 
 //use the library
