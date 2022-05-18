@@ -18,11 +18,11 @@ const {createClient} = require('redis');
 const client = createClient(
     {
     socket:{
-        port:6379,
-        host:"127.0.0.1"
+        port:6379, //port to connect to database
+        host:"127.0.0.1" //set local host IP adress to connect
     }
 });
-client.connect();
+client.connect(); //creat a TCP socker with Redis until the user is useing database
 
 //use the library
 const app = express();
