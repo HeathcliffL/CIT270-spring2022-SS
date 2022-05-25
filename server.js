@@ -64,8 +64,12 @@ app.post('/login',  async (request,response) to const validatePassword = async (
 */
 //app.post('/login', validatePassword);  
 
-const signup = (request, response) => {
-    const password = md5(request.body.password);
-    client.hSet('user', request.body.userName, password);
+const signup = async (request, response) => {
+    const clearPassword = request.body.password;
+    const password = md5(clearPassword);
+    await client.hSet('user', request.body.userName, password);
+    response.status(200);//200 means OK
+    response.send({result:"Saved"});
 }
+
 app.post('/signup', signup);
