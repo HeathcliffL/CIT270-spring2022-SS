@@ -1,6 +1,10 @@
 //import express library
 const express = require('express');
 
+// import https
+const https = require('https');
+const fs = require('fs');// import fs
+
 //set the port to
 const port = 3000;
 
@@ -14,6 +18,7 @@ const md5 = require('md5');
 
 //require the redis libary
 const {createClient} = require('redis');
+const { fstat } = require('fs');
 //use this to connocting redis database
 const client = createClient(
     {
@@ -30,8 +35,11 @@ const app = express();
 //use the middleware (call it before anything else happens on each requrest) 
 app.use(bodyParser.json());
 
-//listening the incoming request
-app.listen(port, async ()=>{
+//call https certaficate then listening the incoming request
+https.createServer({
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert'),
+},app).listen(port, async ()=>{
     await client.connect();//creating a TCP socket with redis
     console.log("listening port: " + port + " ...")
 });
