@@ -39,6 +39,7 @@ app.use(bodyParser.json());
 https.createServer({
     key: fs.readFileSync('server.key'),
     cert: fs.readFileSync('server.cert'),
+    passphrase: 'P@ssw0rd',
 },app).listen(port, async ()=>{
     await client.connect();//creating a TCP socket with redis
     console.log("listening port: " + port + " ...")
