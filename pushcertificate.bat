@@ -1,0 +1,1 @@
+scp ./server.* heath@heath.nodejs.cit270.com:/tmp
