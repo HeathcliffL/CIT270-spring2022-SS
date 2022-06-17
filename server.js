@@ -20,13 +20,7 @@ const md5 = require('md5');
 const {createClient} = require('redis');
 const { fstat } = require('fs');
 //use this to connocting redis database
-const client = createClient(
-    {
-    socket:{
-        port:6379, //port to connect to database
-        host:"127.0.0.1" //set local host IP adress to connect
-    }
-});
+const client = createClient({ url: 'redis://default@10.128.0.2', });
 //client.connect(); //creat a TCP socker with Redis until the user is useing database
 
 //use the library
