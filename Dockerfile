@@ -11,5 +11,5 @@ RUN npm install
 
 COPY . ./
 
-#This is the last command we need to start the 
+#This is the last command we need to start the container
 CMD npm start
