@@ -41,6 +41,8 @@ spec:
               path: /
               #This is the port to use to see if my API is running
               port: 443
+              #This is the protocol to use to see if my API is running
+              scheme: HTTPS
             initialDelaySeconds: 3
             periodSeconds: 3
           readinessProbe:
@@ -49,6 +51,8 @@ spec:
               path: /
               #This is the port to use to see if my API is started
               port: 443
+              #This is the protocol to use to see if my API is started
+              scheme: HTTPS
             initialDelaySeconds: 3
             periodSeconds: 3
 #this is the start of a new document for the load Balancer
