@@ -51,3 +51,16 @@ spec:
               port: 443
             initialDelaySeconds: 3
             periodSeconds: 3
+#this is the start of a new document for the load Balancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heath-cit270-loadbalancer
+spec:
+  selector:
+    app: heath-cit270
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 3000
