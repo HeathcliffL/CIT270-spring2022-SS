@@ -6,7 +6,8 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels: app:heath-cit270
+    matchLabels:
+      app: heath-cit270
   template:
     metadata:
       labels:
