@@ -1,0 +1,52 @@
+apiVersion: apps/v1 #version of API we are useing
+kind: Deployment #This can be a statefulset, or deployment, a deployment doesn't need a hard drive that sticks around
+metadata:
+  #This is the name of the deployment
+  name: heath-cit270
+spec:
+  replicas: 1
+  selevtor:
+    matchLabels: app:heath-cit270
+  template:
+    metadata:
+      labels:
+        app: heath-cit270
+    spec:
+      containers:
+        - name: heath-cit270
+          #This is the Dockerhub url to my image
+          image: heathl/cit270
+          #this is the command to run once the container start
+          command: ['npm']
+          #There are the arguments to pass the command when the container start
+          args: ['run', 'start']
+          # this is the port my conatiner is listening on, ex: 443
+          ports:
+            - containerPort: 443
+          resources:
+            limits:
+              #this is the Max CPU (in cores) my container can use
+              cpu: '.125'
+              #this is the max memory (in millibytes)
+              memory: '500Mi'
+            requests:
+              #this is the minimum CPU (in cores) my container can use
+              cpu: '.1'
+              #this is the minimum memory (in millibytes)
+              memory: '250Mi'
+            livenessProbe:
+              httpGet:
+                #This is the url to call to see if my API is running
+                path: /
+                #This is the port to use to see if my API is running
+                port: 443
+              initialDelaySeconds: 3
+              periodSeconds: 3
+            readinessProbe:
+              httpGet:
+                #This is the url to call to see if my API is started
+                path: /
+                #This is the port to use to see if my API is started
+                port: 443
+              initialDelaySeconds: 3
+              periodSeconds: 3
