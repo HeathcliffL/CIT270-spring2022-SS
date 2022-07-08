@@ -34,19 +34,19 @@ spec:
               cpu: '.1'
               #this is the minimum memory (in millibytes)
               memory: '250Mi'
-            livenessProbe:
-              httpGet:
-                #This is the url to call to see if my API is running
-                path: /
-                #This is the port to use to see if my API is running
-                port: 443
-              initialDelaySeconds: 3
-              periodSeconds: 3
-            readinessProbe:
-              httpGet:
-                #This is the url to call to see if my API is started
-                path: /
-                #This is the port to use to see if my API is started
-                port: 443
-              initialDelaySeconds: 3
-              periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              #This is the url to call to see if my API is running
+              path: /
+              #This is the port to use to see if my API is running
+              port: 443
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              #This is the url to call to see if my API is started
+              path: /
+              #This is the port to use to see if my API is started
+              port: 443
+            initialDelaySeconds: 3
+            periodSeconds: 3
