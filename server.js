@@ -6,7 +6,7 @@ const https = require('https');
 const fs = require('fs');// import fs
 
 //set the port to
-const port = 443;//defult port is 443
+const port = 3000;//defult port is 443
 
 //body paerser is called middleware
 const bodyParser = require('body-parser');
@@ -30,14 +30,19 @@ const app = express();
 app.use(bodyParser.json());
 
 //call https certaficate then listening the incoming request
-https.createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert'),
-    passphrase: 'P@ssw0rd',
-},app).listen(port, async ()=>{
-    await client.connect();//creating a TCP socket with redis
-    console.log("listening port: " + port + " ...")
-});
+// https.createServer({
+//     key: fs.readFileSync('server.key'),
+//     cert: fs.readFileSync('server.cert'),
+//     passphrase: 'P@ssw0rd',
+// },app).listen(port, async ()=>{
+//     await client.connect();//creating a TCP socket with redis
+//     console.log("listening port: " + port + " ...")
+// });
+
+app.listen(port, async()=>{
+    await client.connect();
+    console.log("listening port: " + port + " ...");
+})
 
 //respond the requrid ('/': means nothing)
 app.get('/', (request,response)=>{response.send("Hello")});
