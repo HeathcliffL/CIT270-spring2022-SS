@@ -40,7 +40,7 @@ spec:
               #This is the url to call to see if my API is running
               path: /
               #This is the port to use to see if my API is running
-              port: 443
+              port: 3000
               #This is the protocol to use to see if my API is running
               scheme: HTTP
             initialDelaySeconds: 3
