@@ -23,7 +23,7 @@ spec:
           args: ['run', 'start']
           # this is the port my conatiner is listening on, ex: 443
           ports:
-            - containerPort: 443
+            - containerPort: 3000
           resources:
             limits:
               #this is the Max CPU (in cores) my container can use
@@ -50,7 +50,7 @@ spec:
               #This is the url to call to see if my API is started
               path: /
               #This is the port to use to see if my API is started
-              port: 443
+              port: 3000
               #This is the protocol to use to see if my API is started
               scheme: HTTPS
             initialDelaySeconds: 3
