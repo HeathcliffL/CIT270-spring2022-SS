@@ -72,8 +72,8 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: heath-cit270-dev-ingress
-  namespace: heath-cit270-dev
+  name: heath-cit270-ingress
+  namespace: heath-cit270
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.class: 'nginx'
@@ -82,7 +82,7 @@ spec:
   tls:
     - hosts:
         - heathnodejs.cit270.com
-      secretName: heath-cit270-dev-tls
+      secretName: heath-cit270-tls
   rules:
     - host: heathnodejs.cit270.com
       http:
